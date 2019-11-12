@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Domotica</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/app.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h3>
+        Choose your config here!
+      </h3>
+    </div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="align-items-center col-5 app" id="appData"></div>
+        <div
+          class="align-items-center col-5 offset-1 app"
+          id="appSensors"
+        ></div>
+      </div>
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: 'AIzaSyAlOKUILTKXIA4tZumn_LOPybMYOnNaLGI',
+        authDomain: 'wot-domotica-81bb6.firebaseapp.com',
+        databaseURL: 'https://wot-domotica-81bb6.firebaseio.com',
+        projectId: 'wot-domotica-81bb6',
+        storageBucket: 'wot-domotica-81bb6.appspot.com',
+        messagingSenderId: '309175591051',
+        appId: '1:309175591051:web:8272d81c81d81ab2f4748e',
+        measurementId: 'G-YRG769443Q',
+      }
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig)
+      firebase.analytics()
+    </script>
+    <script src="./assets/js/app.js"></script>
+  </body>
+</html>
