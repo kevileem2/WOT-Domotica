@@ -2,6 +2,7 @@ window.onload = () => {
   let db = firebase.firestore()
   var configRef = db.collection('smartHomeConfig').doc('config1')
   var sensorRef = db.collection('smartHomeConfig').doc('sensors')
+  var burglaryRef = db.collection('smartHomeConfig').doc('burglary')
 
   // Valid options for source are 'server', 'cache', or
   // 'default'. See https://firebase.google.com/docs/reference/js/firebase.firestore.GetOptions
@@ -11,9 +12,11 @@ window.onload = () => {
   }
 
   let configKeys = {}
+  let burglaryKey = {}
 
   const eventListener = () => {
     const allCheckboxes = document.getElementsByClassName('form-check-input')
+    const alertButton = document.getElementById('appBurglary')
     for (let i = 0; i < allCheckboxes.length; i++) {
       const checkbox = allCheckboxes[i]
       checkbox.addEventListener('change', () => {
@@ -23,10 +26,13 @@ window.onload = () => {
         configRef.set(configKeys)
       })
     }
+    alertButton.addEventListener('click', () => {
+      burglaryKey['isRobbery'] = !burglaryKey.isRobbery
+      burglaryRef.set(burglaryKey)
+    })
   }
 
   sensorRef.get(getOptions).then(doc => {
-    console.log(doc.data())
     for (key in doc.data()) {
       if (doc.data().hasOwnProperty(key)) {
         const makeContainerEl = document.createElement('div')
@@ -36,6 +42,14 @@ window.onload = () => {
         makeContainerEl.appendChild(makeP)
         const appDataEl = document.getElementById('appSensors')
         appDataEl.appendChild(makeContainerEl)
+      }
+    }
+  })
+
+  burglaryRef.get(getOptions).then(doc => {
+    for (key in doc.data()) {
+      if (doc.data().hasOwnProperty(key)) {
+        burglaryKey[key] = doc.data()[key]
       }
     }
   })

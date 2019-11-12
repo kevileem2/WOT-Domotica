@@ -18,6 +18,9 @@ body {
 .container {
   margin-top: 7%;
 }
+.marginBottom {
+  margin-bottom: 1%;
+}
 
 .app {
   padding: 2% 0;
